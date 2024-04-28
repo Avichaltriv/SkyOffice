@@ -12,7 +12,7 @@ import {
   ComputerRemoveUserCommand,
 } from './commands/ComputerUpdateArrayCommand'
 import {
-  WhiteboardAddUserCommand,
+  WhiteboardAddUserCommand,  
   WhiteboardRemoveUserCommand,
 } from './commands/WhiteboardUpdateArrayCommand'
 import ChatMessageUpdateCommand from './commands/ChatMessageUpdateCommand'
@@ -39,7 +39,7 @@ export class SkyOffice extends Room<OfficeState> {
 
     this.setState(new OfficeState())
 
-    // HARD-CODED: Add 5 computers in a room
+    // HARD-CODED: Add 5 computers in a room  
     for (let i = 0; i < 5; i++) {
       this.state.computers.set(String(i), new Computer())
     }
@@ -51,7 +51,7 @@ export class SkyOffice extends Room<OfficeState> {
 
     // when a player connect to a computer, add to the computer connectedUser array
     this.onMessage(Message.CONNECT_TO_COMPUTER, (client, message: { computerId: string }) => {
-      this.dispatcher.dispatch(new ComputerAddUserCommand(), {
+      this.dispatcher.dispatch(new ComputerAddUserCommand(), {  
         client,
         computerId: message.computerId,
       })
@@ -63,7 +63,7 @@ export class SkyOffice extends Room<OfficeState> {
         client,
         computerId: message.computerId,
       })
-    })
+    })    
 
     // when a player stop sharing screen
     this.onMessage(Message.STOP_SCREEN_SHARE, (client, message: { computerId: string }) => {
@@ -88,7 +88,7 @@ export class SkyOffice extends Room<OfficeState> {
     // when a player disconnect from a whiteboard, remove from the whiteboard connectedUser array
     this.onMessage(
       Message.DISCONNECT_FROM_WHITEBOARD,
-      (client, message: { whiteboardId: string }) => {
+      (client, message: { whiteboardId: string }) => {  
         this.dispatcher.dispatch(new WhiteboardRemoveUserCommand(), {
           client,
           whiteboardId: message.whiteboardId,

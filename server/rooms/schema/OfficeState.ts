@@ -13,11 +13,11 @@ export class Player extends Schema implements IPlayer {
   @type('number') y = 500
   @type('string') anim = 'adam_idle_down'
   @type('boolean') readyToConnect = false
-  @type('boolean') videoConnected = false
+  @type('boolean') videoConnected = false 
 }
 
 export class Computer extends Schema implements IComputer {
-  @type({ set: 'string' }) connectedUser = new SetSchema<string>()
+  @type({ set: 'string' }) connectedUser = new SetSchema<string>() 
 }
 
 export class Whiteboard extends Schema implements IWhiteboard {
@@ -31,7 +31,7 @@ export class ChatMessage extends Schema implements IChatMessage {
   @type('string') content = ''
 }
 
-export class OfficeState extends Schema implements IOfficeState {
+export class OfficeState extends Schema implements IOfficeState { 
   @type({ map: Player })
   players = new MapSchema<Player>()
 
@@ -47,7 +47,7 @@ export class OfficeState extends Schema implements IOfficeState {
 
 export const whiteboardRoomIds = new Set<string>()
 const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-const charactersLength = characters.length
+const charactersLength = characters.length 
 
 function getRoomId(): string {
   let result = ''
@@ -60,5 +60,5 @@ function getRoomId(): string {
   } else {
     console.log('roomId exists, remaking another one.')
     return getRoomId()
-  }
+  }    
 }
